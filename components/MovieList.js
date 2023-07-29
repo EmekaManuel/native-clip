@@ -35,10 +35,7 @@ const MovieList = ({ title, data }) => {
       >
         {data.map((item, index) => {
           return (
-            <TouchableWithoutFeedback
-              key={index}
-              onPress={() => navigation.navigate("Movie", item)}
-            >
+            <TouchableWithoutFeedback key={index} onPress={() => navigation.navigate("Movie", item)} >
               <View style={[tw`mr-4 text-white text-xl`, { marginTop: 4 }]}>
                 <Image
                   source={require("../assets/images/moviePoster1.png")}

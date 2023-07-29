@@ -13,45 +13,39 @@ import { useNavigation } from "@react-navigation/native";
 
 var { width, height } = Dimensions.get("window");
 
-
-const TrendingMovies = ({ data }) => {
+const TrendingMovies = ({ data, item }) => {
   const navigation = useNavigation();
   const handleClick = () => {
     navigation.navigate("Movie", item);
   };
   return (
-      <View style={tw`mb-6 `}>
-        <Text style={tw`text-white text-xl p-3 mb-5`}>Trending</Text>
-        <Carousel
-          renderItem={({ item }) => <MovieCard handleClick={handleClick} item={item} />}
-          data={data}
-          firstItem={1}
-          inactiveSlideOpacity={0.6}
-          sliderWidth={width}
-          itemWidth={width * 0.62}
-          slideStyle={{ display: "flex", alignItems: "center" }}
-        />
-      </View>
+    <View style={tw`mb-6 `}>
+      <Text style={tw`text-white text-xl p-3 mb-5`}>Trending</Text>
+      <Carousel
+        renderItem={({ item }) => (
+          <MovieCard handleClick={handleClick} item={item} />
+        )}
+        data={data}
+        firstItem={1}
+        inactiveSlideOpacity={0.6}
+        sliderWidth={width}
+        itemWidth={width * 0.62}
+        slideStyle={{ display: "flex", alignItems: "center" }}
+      />
+    </View>
   );
 };
 export default TrendingMovies;
 
-
 const MovieCard = ({ item, handleClick }) => {
   return (
-      <TouchableWithoutFeedback onPress={()=>handleClick(item)}>
-        <Image
-          style={[
-            tw`rounded-3xl`,
-            { width: width * 0.6, height: height * 0.4 },
-          ]}
-          source={require("../assets/images/moviePoster1.png")}
-        />
-      </TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={() => handleClick(item)}>
+      <Image
+        style={[tw`rounded-3xl`, { width: width * 0.6, height: height * 0.4 }]}
+        source={require("../assets/images/moviePoster1.png")}
+      />
+    </TouchableWithoutFeedback>
   );
 };
-
-
-
 
 const styles = StyleSheet.create({});
