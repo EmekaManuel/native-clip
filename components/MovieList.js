@@ -16,16 +16,22 @@ import { useNavigation } from "@react-navigation/native";
 
 var { width, height } = Dimensions.get("window");
 
-const MovieList = ({ title, data }) => {
+const MovieList = ({ title, data, hideSeeAll }) => {
   const navigation = useNavigation();
-  const movieName = "Antman and the wasp";
+  const movieName = "Antmans and the wasp";
   return (
     <View style={[tw`mb-8`, { marginTop: 16 }]}>
       <View style={[tw`mx-4 flex-row justify-between py-1 items-center`]}>
         <Text style={[tw`text-white text-xl`]}>{title}</Text>
-        <TouchableOpacity>
-          <Text style={[tw`text-yellow-400 text-lg`]}>See All</Text>
-        </TouchableOpacity>
+
+      {
+        hideSeeAll ? (
+          <TouchableOpacity>
+            <Text style={[tw`text-yellow-400 text-lg`]}>See All</Text>
+          </TouchableOpacity>) : ""
+      }
+
+
       </View>
       {/* movie row */}
       <ScrollView
@@ -35,7 +41,10 @@ const MovieList = ({ title, data }) => {
       >
         {data.map((item, index) => {
           return (
-            <TouchableWithoutFeedback key={index} onPress={() => navigation.navigate("Movie", item)} >
+            <TouchableWithoutFeedback
+              key={index}
+              onPress={() => navigation.push("Movie", item)}
+            >
               <View style={[tw`mr-4 text-white text-xl`, { marginTop: 4 }]}>
                 <Image
                   source={require("../assets/images/moviePoster1.png")}
@@ -44,8 +53,11 @@ const MovieList = ({ title, data }) => {
                     { width: width * 0.33, height: height * 0.22 },
                   ]}
                 />
-                <Text style={[tw`text-white ml-1`]}>{
-                movieName.length>14 ? movieName.slice(0,14)+ "..." : movieName}</Text>
+                <Text style={[tw`text-white ml-1`]}>
+                  {movieName.length > 14
+                    ? movieName.slice(0, 14) + "..."
+                    : movieName}
+                </Text>
               </View>
             </TouchableWithoutFeedback>
           );
