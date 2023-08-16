@@ -18,12 +18,15 @@ import {
 } from "react-native-heroicons/outline";
 import TrendingMovies from "../components/TrendingMovies";
 import MovieList from "../components/MovieList";
+import { useNavigation } from "@react-navigation/native";
 
 const ios = Platform.OS == "ios";
 const HomeScreen = () => {
   const [trending, setTrending] = useState([1, 2, 3]);
   const [upComing, setUpcoming] = useState([1, 2, 3]);
   const [topRated, setTopRated] = useState([1, 2, 3]);
+
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={tw`flex-1 bg-black h-full`}>
       <View style={tw`${ios ? "-mb-2" : "mb-3"} p-3`}>
@@ -33,7 +36,7 @@ const HomeScreen = () => {
           <Text style={tw`text-white text-3xl font-bold`}>
             <Text style={tw`text-yellow-400`}>Clip</Text>Hub
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Search")}>
             <MagnifyingGlassIcon size={30} color="white" strokeWidth={2} />
           </TouchableOpacity>
         </View>
