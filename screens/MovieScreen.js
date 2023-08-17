@@ -16,6 +16,7 @@ import { HeartIcon } from "react-native-heroicons/solid";
 import { LinearGradient } from "expo-linear-gradient";
 import Cast from "../components/Cast";
 import MovieList from "../components/MovieList";
+
 const { width, height } = Dimensions.get("window");
 const ios = Platform.OS == "ios";
 const topMargin = ios ? "" : "mt-3";
@@ -25,11 +26,10 @@ const MovieScreen = ({}) => {
 
   const { params: item } = useRoute();
   const navigation = useNavigation();
-  
+
   const [isFavorite, setIsFavorite] = useState(false);
-  const [cast, setCast]= useState([1,2,3,4,5])
-  const [similarMovies, setSimilarMovies] = useState([1,2,3,4,5])
-  
+  const [cast, setCast] = useState([1, 2, 3, 4, 5]);
+  const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5]);
 
   useEffect(() => {}, [item]);
 
@@ -82,7 +82,10 @@ const MovieScreen = ({}) => {
         </Text>
         {/**status, release and runtime */}
         <Text
-          style={[tw`text-center pb-2 text-base font-semibold`, {color: "rgb(163 163 163)"}]}
+          style={[
+            tw`text-center pb-2 text-base font-semibold`,
+            { color: "rgb(163 163 163)" },
+          ]}
         >
           Released • 2020 • 170 minutes
         </Text>
@@ -93,34 +96,42 @@ const MovieScreen = ({}) => {
           ]}
         >
           <Text
-            style={[tw`text-base text-center font-semibold `, {color: "rgb(163 163 163)"}]}
+            style={[
+              tw`text-base text-center font-semibold `,
+              { color: "rgb(163 163 163)" },
+            ]}
           >
             Action •
           </Text>
           <Text
-            style={[tw`text-base text-center font-semibold `, {color: "rgb(163 163 163)"}]}
+            style={[
+              tw`text-base text-center font-semibold `,
+              { color: "rgb(163 163 163)" },
+            ]}
           >
             {""} Thrill •
           </Text>
           <Text
-            style={[tw`text-base text-center font-semibold `, {color: "rgb(163 163 163)"}]}
+            style={[
+              tw`text-base text-center font-semibold `,
+              { color: "rgb(163 163 163)" },
+            ]}
           >
             {""} Comedy
           </Text>
-    
         </View>
-        <Text
-            style={[tw`text-base mx-4 `, {color: "rgb(163 163 163)"}]}
-          >
-           world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello wor
-          </Text>
+        <Text style={[tw`text-base mx-4 `, { color: "rgb(163 163 163)" }]}>
+          world hello world hello world hello world hello world hello world
+          hello world hello world hello world hello world hello world hello
+          world hello world hello world hello world hello world hello world
+          hello world hello world hello world hello world hello wor
+        </Text>
       </View>
       {/*Cast members*/}
-      <Cast navigation={navigation} cast={cast}/>
+      <Cast navigation={navigation} cast={cast} />
 
-            {/*similar movies*/}
-            <MovieList data={similarMovies} title={"Similar Movies"}/>
-
+      {/*similar movies*/}
+      <MovieList data={similarMovies} title={"Similar Movies"} />
     </ScrollView>
   );
 };

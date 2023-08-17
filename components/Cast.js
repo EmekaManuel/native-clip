@@ -18,10 +18,15 @@ const Cast = ({ cast, navigation }) => {
         {cast &&
           cast.map((person, index) => {
             return (
-              <TouchableOpacity onPress={()=>navigation.navigate("Person", person)} key={index} style={[tw`items-center mr-4 `]}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Person", person)}
+                key={index}
+                style={[tw`items-center mr-4 `]}
+              >
                 <View
                   style={[
-                    tw`overflow-hidden rounded-full items-center border border-gray-500`, {height:60, width:60}
+                    tw`overflow-hidden rounded-full items-center border border-gray-500`,
+                    { height: 60, width: 60 },
                   ]}
                 >
                   <Image
